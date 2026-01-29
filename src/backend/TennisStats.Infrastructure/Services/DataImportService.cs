@@ -290,8 +290,9 @@ public class DataImportService : IDataImportService
                     }
 
                     // Check if we already have this ranking
+                    var rankingDate = ToUtc(externalRanking.RankingDate);
                     var existingRanking = await _rankingRepository.GetPlayerRankingForDateAsync(
-                        player.Id, externalRanking.RankingDate, cancellationToken);
+                        player.Id, rankingDate, cancellationToken);
 
                     if (existingRanking == null)
                     {
@@ -306,7 +307,7 @@ public class DataImportService : IDataImportService
                             RankChange = externalRanking.PreviousRank.HasValue
                                 ? externalRanking.PreviousRank.Value - externalRanking.Rank
                                 : null,
-                            RankingDate = externalRanking.RankingDate,
+                            RankingDate = rankingDate,
                             Association = association,
                             LastSyncedAt = DateTime.UtcNow
                         };
@@ -476,7 +477,7 @@ public class DataImportService : IDataImportService
             LastName = dto.LastName,
             FullName = dto.FullName,
             Country = dto.Country,
-            DateOfBirth = dto.DateOfBirth,
+            DateOfBirth = ToUtc(dto.DateOfBirth),
             HeightCm = dto.HeightCm,
             WeightKg = dto.WeightKg,
             Hand = ParseHand(dto.Hand),
@@ -495,7 +496,7 @@ public class DataImportService : IDataImportService
         player.LastName = dto.LastName;
         player.FullName = dto.FullName;
         player.Country = dto.Country;
-        player.DateOfBirth = dto.DateOfBirth;
+        player.DateOfBirth = ToUtc(dto.DateOfBirth);
         player.HeightCm = dto.HeightCm;
         player.WeightKg = dto.WeightKg;
         player.Hand = ParseHand(dto.Hand);
@@ -514,8 +515,8 @@ public class DataImportService : IDataImportService
             City = dto.City,
             Country = dto.Country,
             Surface = ParseSurface(dto.Surface),
-            StartDate = dto.StartDate,
-            EndDate = dto.EndDate,
+            StartDate = ToUtc(dto.StartDate),
+            EndDate = ToUtc(dto.EndDate),
             PrizeMoney = dto.PrizeMoney,
             Currency = dto.Currency,
             Category = dto.Category,
@@ -532,8 +533,8 @@ public class DataImportService : IDataImportService
         tournament.City = dto.City;
         tournament.Country = dto.Country;
         tournament.Surface = ParseSurface(dto.Surface);
-        tournament.StartDate = dto.StartDate;
-        tournament.EndDate = dto.EndDate;
+        tournament.StartDate = ToUtc(dto.StartDate);
+        tournament.EndDate = ToUtc(dto.EndDate);
         tournament.PrizeMoney = dto.PrizeMoney;
         tournament.Currency = dto.Currency;
         tournament.Category = dto.Category;
@@ -571,6 +572,30 @@ public class DataImportService : IDataImportService
             "grass" => Surface.Grass,
             "carpet" => Surface.Carpet,
             _ => Surface.Unknown
+        };
+    }
+
+    /// <summary>
+    /// Converts a DateTime to UTC. PostgreSQL requires UTC for timestamp with time zone columns.
+    /// </summary>
+    private static DateTime? ToUtc(DateTime? dateTime)
+    {
+        if (!dateTime.HasValue)
+            return null;
+
+        return ToUtc(dateTime.Value);
+    }
+
+    /// <summary>
+    /// Converts a DateTime to UTC. PostgreSQL requires UTC for timestamp with time zone columns.
+    /// </summary>
+    private static DateTime ToUtc(DateTime dateTime)
+    {
+        return dateTime.Kind switch
+        {
+            DateTimeKind.Utc => dateTime,
+            DateTimeKind.Local => dateTime.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(dateTime, DateTimeKind.Utc) // Assume unspecified is UTC
         };
     }
 
