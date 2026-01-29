@@ -1,0 +1,47 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Backend (.NET API)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-backend",
+            "program": "${workspaceFolder}/src/backend/TennisStats.API/bin/Debug/net9.0/TennisStats.API.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/backend/TennisStats.API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Frontend (Vue.js)",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "npm run dev",
+            "cwd": "${workspaceFolder}/src/frontend/tennis-stats-app",
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "Local:\\s+(https?://\\S+)",
+                "uriFormat": "%s"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Full Stack (Backend + Frontend)",
+            "configurations": ["Backend (.NET API)", "Frontend (Vue.js)"],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "Tennis Stats",
+                "order": 1
+            }
+        }
+    ]
+}

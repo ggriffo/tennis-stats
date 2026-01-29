@@ -1,0 +1,113 @@
+@TennisStats.API_HostAddress = http://localhost:5012
+
+### =====================================================
+### Import Controller - Data Import Endpoints
+### =====================================================
+
+### Health Check - Verify Import Service is Available
+GET {{TennisStats.API_HostAddress}}/api/import/health
+Accept: application/json
+
+###
+
+### Get Import Status
+GET {{TennisStats.API_HostAddress}}/api/import/status
+Accept: application/json
+
+###
+
+### Import WTA Players (paginated, with 1 second delay between requests)
+POST {{TennisStats.API_HostAddress}}/api/import/players?association=0&maxPages=100&delayMs=1000
+Accept: application/json
+
+###
+
+### Import ATP Players
+POST {{TennisStats.API_HostAddress}}/api/import/players?association=1&maxPages=100&delayMs=1000
+Accept: application/json
+
+###
+
+### Import WTA Tournaments (2020-2025)
+POST {{TennisStats.API_HostAddress}}/api/import/tournaments?association=0&startYear=2020&endYear=2025&delayMs=1000
+Accept: application/json
+
+###
+
+### Import ATP Tournaments (2020-2025)
+POST {{TennisStats.API_HostAddress}}/api/import/tournaments?association=1&startYear=2020&endYear=2025&delayMs=1000
+Accept: application/json
+
+###
+
+### Import WTA Rankings (current)
+POST {{TennisStats.API_HostAddress}}/api/import/rankings?association=0
+Accept: application/json
+
+###
+
+### Import ATP Rankings (current)
+POST {{TennisStats.API_HostAddress}}/api/import/rankings?association=1
+Accept: application/json
+
+###
+
+### Full Historical Import - WTA (2020-2025) - LONG RUNNING!
+POST {{TennisStats.API_HostAddress}}/api/import/full?association=0&startYear=2020&endYear=2025&delayMs=1000
+Accept: application/json
+
+###
+
+### Full Historical Import - ATP (2020-2025) - LONG RUNNING!
+POST {{TennisStats.API_HostAddress}}/api/import/full?association=1&startYear=2020&endYear=2025&delayMs=1000
+Accept: application/json
+
+###
+
+### =====================================================
+### Players Controller
+### =====================================================
+
+### Get All WTA Players
+GET {{TennisStats.API_HostAddress}}/api/players?association=0
+Accept: application/json
+
+###
+
+### Get All ATP Players
+GET {{TennisStats.API_HostAddress}}/api/players?association=1
+Accept: application/json
+
+###
+
+### =====================================================
+### Rankings Controller
+### =====================================================
+
+### Get WTA Rankings
+GET {{TennisStats.API_HostAddress}}/api/rankings?association=0
+Accept: application/json
+
+###
+
+### Get ATP Rankings
+GET {{TennisStats.API_HostAddress}}/api/rankings?association=1
+Accept: application/json
+
+###
+
+### =====================================================
+### Sync Controller
+### =====================================================
+
+### Sync WTA Players from External API
+POST {{TennisStats.API_HostAddress}}/api/sync/players?association=0
+Accept: application/json
+
+###
+
+### Sync ATP Players from External API
+POST {{TennisStats.API_HostAddress}}/api/sync/players?association=1
+Accept: application/json
+
+###
