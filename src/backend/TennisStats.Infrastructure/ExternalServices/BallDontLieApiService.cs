@@ -328,7 +328,7 @@ public class BallDontLieApiService : IExternalTennisApiService
             tournament.PrizeMoney,
             tournament.Currency,
             tournament.Category,
-            tournament.Season?.Year ?? DateTime.Now.Year
+            tournament.GetSeasonYear() ?? DateTime.Now.Year
         );
     }
 
@@ -441,7 +441,26 @@ public class BallDontLieApiService : IExternalTennisApiService
         public int? PrizeMoney { get; set; }
         public string? Currency { get; set; }
         public string? Category { get; set; }
-        public ApiSeason? Season { get; set; }
+        
+        // Season can be either an integer (year) or an object - use JsonElement to handle both
+        [System.Text.Json.Serialization.JsonPropertyName("season")]
+        public System.Text.Json.JsonElement? SeasonElement { get; set; }
+        
+        // Helper to get the season year regardless of format
+        public int? GetSeasonYear()
+        {
+            if (!SeasonElement.HasValue || SeasonElement.Value.ValueKind == System.Text.Json.JsonValueKind.Null)
+                return null;
+                
+            if (SeasonElement.Value.ValueKind == System.Text.Json.JsonValueKind.Number)
+                return SeasonElement.Value.GetInt32();
+                
+            if (SeasonElement.Value.ValueKind == System.Text.Json.JsonValueKind.Object &&
+                SeasonElement.Value.TryGetProperty("year", out var yearProp))
+                return yearProp.GetInt32();
+                
+            return null;
+        }
     }
 
     private class ApiMatch
