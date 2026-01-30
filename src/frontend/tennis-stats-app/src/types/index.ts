@@ -39,6 +39,17 @@ export interface PlayerSeasonStats {
   matchesLost: number
   winPercentage: number
   titlesWon: number
+  
+  // Surface-specific statistics
+  hardMatchesWon: number
+  hardMatchesLost: number
+  clayMatchesWon: number
+  clayMatchesLost: number
+  grassMatchesWon: number
+  grassMatchesLost: number
+  hardWinPercentage: number
+  clayWinPercentage: number
+  grassWinPercentage: number
 }
 
 // Ranking types
@@ -119,13 +130,38 @@ export interface MatchStatistics {
   player1Aces?: number
   player1DoubleFaults?: number
   player1FirstServePercentage?: number
+  player1FirstServesIn?: number
+  player1FirstServesTotal?: number
+  player1FirstServePointsWon?: number
+  player1FirstServePointsTotal?: number
+  player1SecondServePointsWon?: number
+  player1SecondServePointsTotal?: number
+  player1BreakPointsSaved?: number
+  player1BreakPointsFaced?: number
   player1Winners?: number
   player1UnforcedErrors?: number
+  player1FirstServePercentageCalc?: number
+  player1FirstServePointsWonPercentage?: number
+  player1SecondServePointsWonPercentage?: number
+  player1BreakPointsSavedPercentage?: number
+  
   player2Aces?: number
   player2DoubleFaults?: number
   player2FirstServePercentage?: number
+  player2FirstServesIn?: number
+  player2FirstServesTotal?: number
+  player2FirstServePointsWon?: number
+  player2FirstServePointsTotal?: number
+  player2SecondServePointsWon?: number
+  player2SecondServePointsTotal?: number
+  player2BreakPointsSaved?: number
+  player2BreakPointsFaced?: number
   player2Winners?: number
   player2UnforcedErrors?: number
+  player2FirstServePercentageCalc?: number
+  player2FirstServePointsWonPercentage?: number
+  player2SecondServePointsWonPercentage?: number
+  player2BreakPointsSavedPercentage?: number
 }
 
 // Pagination types

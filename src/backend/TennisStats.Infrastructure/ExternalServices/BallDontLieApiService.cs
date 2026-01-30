@@ -351,9 +351,29 @@ public class BallDontLieApiService : IExternalTennisApiService
                 match.HomePlayerStats?.Aces,
                 match.HomePlayerStats?.DoubleFaults,
                 match.HomePlayerStats?.FirstServePercentage,
+                match.HomePlayerStats?.FirstServesIn,
+                match.HomePlayerStats?.FirstServesTotal,
+                match.HomePlayerStats?.FirstServePointsWon,
+                match.HomePlayerStats?.FirstServePointsTotal,
+                match.HomePlayerStats?.SecondServePointsWon,
+                match.HomePlayerStats?.SecondServePointsTotal,
+                match.HomePlayerStats?.BreakPointsSaved,
+                match.HomePlayerStats?.BreakPointsFaced,
+                match.HomePlayerStats?.Winners,
+                match.HomePlayerStats?.UnforcedErrors,
                 match.AwayPlayerStats?.Aces,
                 match.AwayPlayerStats?.DoubleFaults,
-                match.AwayPlayerStats?.FirstServePercentage
+                match.AwayPlayerStats?.FirstServePercentage,
+                match.AwayPlayerStats?.FirstServesIn,
+                match.AwayPlayerStats?.FirstServesTotal,
+                match.AwayPlayerStats?.FirstServePointsWon,
+                match.AwayPlayerStats?.FirstServePointsTotal,
+                match.AwayPlayerStats?.SecondServePointsWon,
+                match.AwayPlayerStats?.SecondServePointsTotal,
+                match.AwayPlayerStats?.BreakPointsSaved,
+                match.AwayPlayerStats?.BreakPointsFaced,
+                match.AwayPlayerStats?.Winners,
+                match.AwayPlayerStats?.UnforcedErrors
             );
         }
 
@@ -493,6 +513,16 @@ public class BallDontLieApiService : IExternalTennisApiService
         public int? Aces { get; set; }
         public int? DoubleFaults { get; set; }
         public int? FirstServePercentage { get; set; }
+        public int? FirstServesIn { get; set; }
+        public int? FirstServesTotal { get; set; }
+        public int? FirstServePointsWon { get; set; }
+        public int? FirstServePointsTotal { get; set; }
+        public int? SecondServePointsWon { get; set; }
+        public int? SecondServePointsTotal { get; set; }
+        public int? BreakPointsSaved { get; set; }
+        public int? BreakPointsFaced { get; set; }
+        public int? Winners { get; set; }
+        public int? UnforcedErrors { get; set; }
     }
 
     private class ApiRanking

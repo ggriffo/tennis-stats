@@ -58,4 +58,17 @@ public class PlayerSeasonStatsDto
     public int MatchesLost { get; set; }
     public decimal WinPercentage => MatchesPlayed > 0 ? Math.Round((decimal)MatchesWon / MatchesPlayed * 100, 1) : 0;
     public int TitlesWon { get; set; }
+    
+    // Surface-specific statistics
+    public int HardMatchesWon { get; set; }
+    public int HardMatchesLost { get; set; }
+    public int ClayMatchesWon { get; set; }
+    public int ClayMatchesLost { get; set; }
+    public int GrassMatchesWon { get; set; }
+    public int GrassMatchesLost { get; set; }
+    
+    // Surface win percentages
+    public decimal HardWinPercentage => (HardMatchesWon + HardMatchesLost) > 0 ? Math.Round((decimal)HardMatchesWon / (HardMatchesWon + HardMatchesLost) * 100, 1) : 0;
+    public decimal ClayWinPercentage => (ClayMatchesWon + ClayMatchesLost) > 0 ? Math.Round((decimal)ClayMatchesWon / (ClayMatchesWon + ClayMatchesLost) * 100, 1) : 0;
+    public decimal GrassWinPercentage => (GrassMatchesWon + GrassMatchesLost) > 0 ? Math.Round((decimal)GrassMatchesWon / (GrassMatchesWon + GrassMatchesLost) * 100, 1) : 0;
 }

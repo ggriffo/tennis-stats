@@ -11,8 +11,12 @@ public class MatchStatistics : BaseEntity
     public int? Player1Aces { get; set; }
     public int? Player1DoubleFaults { get; set; }
     public int? Player1FirstServePercentage { get; set; }
+    public int? Player1FirstServesIn { get; set; }
+    public int? Player1FirstServesTotal { get; set; }
     public int? Player1FirstServePointsWon { get; set; }
+    public int? Player1FirstServePointsTotal { get; set; }
     public int? Player1SecondServePointsWon { get; set; }
+    public int? Player1SecondServePointsTotal { get; set; }
     public int? Player1BreakPointsSaved { get; set; }
     public int? Player1BreakPointsFaced { get; set; }
     public int? Player1ServiceGamesPlayed { get; set; }
@@ -27,8 +31,12 @@ public class MatchStatistics : BaseEntity
     public int? Player2Aces { get; set; }
     public int? Player2DoubleFaults { get; set; }
     public int? Player2FirstServePercentage { get; set; }
+    public int? Player2FirstServesIn { get; set; }
+    public int? Player2FirstServesTotal { get; set; }
     public int? Player2FirstServePointsWon { get; set; }
+    public int? Player2FirstServePointsTotal { get; set; }
     public int? Player2SecondServePointsWon { get; set; }
+    public int? Player2SecondServePointsTotal { get; set; }
     public int? Player2BreakPointsSaved { get; set; }
     public int? Player2BreakPointsFaced { get; set; }
     public int? Player2ServiceGamesPlayed { get; set; }

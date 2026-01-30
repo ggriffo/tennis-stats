@@ -192,6 +192,103 @@ const player = computed(() => playerStore.currentPlayer)
         </v-col>
       </v-row>
 
+      <!-- Surface-Specific Statistics -->
+      <v-row v-if="player.currentSeasonStats" class="mb-4">
+        <v-col cols="12">
+          <v-card>
+            <v-card-title>
+              <v-icon class="mr-2">mdi-texture-box</v-icon>
+              Performance by Surface
+            </v-card-title>
+            <v-divider></v-divider>
+            <v-card-text>
+              <v-row>
+                <!-- Hard Court -->
+                <v-col cols="12" md="4">
+                  <v-card variant="outlined" color="blue-grey-lighten-4">
+                    <v-card-title class="text-center">
+                      <v-icon class="mr-2" color="blue-grey">mdi-circle</v-icon>
+                      Hard Court
+                    </v-card-title>
+                    <v-divider></v-divider>
+                    <v-card-text>
+                      <v-row>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-success">{{ player.currentSeasonStats.hardMatchesWon }}</div>
+                          <div class="text-caption">Wins</div>
+                        </v-col>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-error">{{ player.currentSeasonStats.hardMatchesLost }}</div>
+                          <div class="text-caption">Losses</div>
+                        </v-col>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-primary">{{ player.currentSeasonStats.hardWinPercentage }}%</div>
+                          <div class="text-caption">Win Rate</div>
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </v-card>
+                </v-col>
+
+                <!-- Clay Court -->
+                <v-col cols="12" md="4">
+                  <v-card variant="outlined" color="deep-orange-lighten-4">
+                    <v-card-title class="text-center">
+                      <v-icon class="mr-2" color="deep-orange">mdi-circle</v-icon>
+                      Clay Court
+                    </v-card-title>
+                    <v-divider></v-divider>
+                    <v-card-text>
+                      <v-row>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-success">{{ player.currentSeasonStats.clayMatchesWon }}</div>
+                          <div class="text-caption">Wins</div>
+                        </v-col>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-error">{{ player.currentSeasonStats.clayMatchesLost }}</div>
+                          <div class="text-caption">Losses</div>
+                        </v-col>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-primary">{{ player.currentSeasonStats.clayWinPercentage }}%</div>
+                          <div class="text-caption">Win Rate</div>
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </v-card>
+                </v-col>
+
+                <!-- Grass Court -->
+                <v-col cols="12" md="4">
+                  <v-card variant="outlined" color="green-lighten-4">
+                    <v-card-title class="text-center">
+                      <v-icon class="mr-2" color="green">mdi-circle</v-icon>
+                      Grass Court
+                    </v-card-title>
+                    <v-divider></v-divider>
+                    <v-card-text>
+                      <v-row>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-success">{{ player.currentSeasonStats.grassMatchesWon }}</div>
+                          <div class="text-caption">Wins</div>
+                        </v-col>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-error">{{ player.currentSeasonStats.grassMatchesLost }}</div>
+                          <div class="text-caption">Losses</div>
+                        </v-col>
+                        <v-col cols="4" class="text-center">
+                          <div class="text-h5 text-primary">{{ player.currentSeasonStats.grassWinPercentage }}%</div>
+                          <div class="text-caption">Win Rate</div>
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+
       <!-- Ranking History -->
       <v-row v-if="player.rankingHistory && player.rankingHistory.length > 0">
         <v-col cols="12">
