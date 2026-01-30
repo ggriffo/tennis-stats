@@ -16,15 +16,6 @@ const stats = computed(() => props.statistics)
 const formatPercentage = (value?: number): string => {
   return value !== undefined && value !== null ? `${value.toFixed(1)}%` : '-'
 }
-
-// Helper function to format fraction as percentage
-const formatFraction = (numerator?: number, denominator?: number): string => {
-  if (numerator === undefined || denominator === undefined || denominator === 0) {
-    return '-'
-  }
-  const percentage = (numerator / denominator) * 100
-  return `${percentage.toFixed(1)}%`
-}
 </script>
 
 <template>

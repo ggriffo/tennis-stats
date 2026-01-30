@@ -140,10 +140,10 @@ public class MatchStatisticsDto
     public int? Player1UnforcedErrors { get; set; }
     
     // Calculated percentages for Player 1
-    public decimal? Player1FirstServePercentageCalc => Player1FirstServesTotal > 0 ? Math.Round((decimal)Player1FirstServesIn!.Value / Player1FirstServesTotal.Value * 100, 1) : null;
-    public decimal? Player1FirstServePointsWonPercentage => Player1FirstServePointsTotal > 0 ? Math.Round((decimal)Player1FirstServePointsWon!.Value / Player1FirstServePointsTotal.Value * 100, 1) : null;
-    public decimal? Player1SecondServePointsWonPercentage => Player1SecondServePointsTotal > 0 ? Math.Round((decimal)Player1SecondServePointsWon!.Value / Player1SecondServePointsTotal.Value * 100, 1) : null;
-    public decimal? Player1BreakPointsSavedPercentage => Player1BreakPointsFaced > 0 ? Math.Round((decimal)Player1BreakPointsSaved!.Value / Player1BreakPointsFaced.Value * 100, 1) : null;
+    public decimal? Player1FirstServePercentageCalc => Player1FirstServesIn.HasValue && Player1FirstServesTotal.HasValue && Player1FirstServesTotal.Value > 0 ? Math.Round((decimal)Player1FirstServesIn.Value / Player1FirstServesTotal.Value * 100, 1) : null;
+    public decimal? Player1FirstServePointsWonPercentage => Player1FirstServePointsWon.HasValue && Player1FirstServePointsTotal.HasValue && Player1FirstServePointsTotal.Value > 0 ? Math.Round((decimal)Player1FirstServePointsWon.Value / Player1FirstServePointsTotal.Value * 100, 1) : null;
+    public decimal? Player1SecondServePointsWonPercentage => Player1SecondServePointsWon.HasValue && Player1SecondServePointsTotal.HasValue && Player1SecondServePointsTotal.Value > 0 ? Math.Round((decimal)Player1SecondServePointsWon.Value / Player1SecondServePointsTotal.Value * 100, 1) : null;
+    public decimal? Player1BreakPointsSavedPercentage => Player1BreakPointsSaved.HasValue && Player1BreakPointsFaced.HasValue && Player1BreakPointsFaced.Value > 0 ? Math.Round((decimal)Player1BreakPointsSaved.Value / Player1BreakPointsFaced.Value * 100, 1) : null;
     
     public int? Player2Aces { get; set; }
     public int? Player2DoubleFaults { get; set; }
@@ -160,10 +160,10 @@ public class MatchStatisticsDto
     public int? Player2UnforcedErrors { get; set; }
     
     // Calculated percentages for Player 2
-    public decimal? Player2FirstServePercentageCalc => Player2FirstServesTotal > 0 ? Math.Round((decimal)Player2FirstServesIn!.Value / Player2FirstServesTotal.Value * 100, 1) : null;
-    public decimal? Player2FirstServePointsWonPercentage => Player2FirstServePointsTotal > 0 ? Math.Round((decimal)Player2FirstServePointsWon!.Value / Player2FirstServePointsTotal.Value * 100, 1) : null;
-    public decimal? Player2SecondServePointsWonPercentage => Player2SecondServePointsTotal > 0 ? Math.Round((decimal)Player2SecondServePointsWon!.Value / Player2SecondServePointsTotal.Value * 100, 1) : null;
-    public decimal? Player2BreakPointsSavedPercentage => Player2BreakPointsFaced > 0 ? Math.Round((decimal)Player2BreakPointsSaved!.Value / Player2BreakPointsFaced.Value * 100, 1) : null;
+    public decimal? Player2FirstServePercentageCalc => Player2FirstServesIn.HasValue && Player2FirstServesTotal.HasValue && Player2FirstServesTotal.Value > 0 ? Math.Round((decimal)Player2FirstServesIn.Value / Player2FirstServesTotal.Value * 100, 1) : null;
+    public decimal? Player2FirstServePointsWonPercentage => Player2FirstServePointsWon.HasValue && Player2FirstServePointsTotal.HasValue && Player2FirstServePointsTotal.Value > 0 ? Math.Round((decimal)Player2FirstServePointsWon.Value / Player2FirstServePointsTotal.Value * 100, 1) : null;
+    public decimal? Player2SecondServePointsWonPercentage => Player2SecondServePointsWon.HasValue && Player2SecondServePointsTotal.HasValue && Player2SecondServePointsTotal.Value > 0 ? Math.Round((decimal)Player2SecondServePointsWon.Value / Player2SecondServePointsTotal.Value * 100, 1) : null;
+    public decimal? Player2BreakPointsSavedPercentage => Player2BreakPointsSaved.HasValue && Player2BreakPointsFaced.HasValue && Player2BreakPointsFaced.Value > 0 ? Math.Round((decimal)Player2BreakPointsSaved.Value / Player2BreakPointsFaced.Value * 100, 1) : null;
 }
 
 public class SeasonDto
