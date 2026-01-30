@@ -128,13 +128,42 @@ public class MatchStatisticsDto
     public int? Player1Aces { get; set; }
     public int? Player1DoubleFaults { get; set; }
     public int? Player1FirstServePercentage { get; set; }
+    public int? Player1FirstServesIn { get; set; }
+    public int? Player1FirstServesTotal { get; set; }
+    public int? Player1FirstServePointsWon { get; set; }
+    public int? Player1FirstServePointsTotal { get; set; }
+    public int? Player1SecondServePointsWon { get; set; }
+    public int? Player1SecondServePointsTotal { get; set; }
+    public int? Player1BreakPointsSaved { get; set; }
+    public int? Player1BreakPointsFaced { get; set; }
     public int? Player1Winners { get; set; }
     public int? Player1UnforcedErrors { get; set; }
+    
+    // Calculated percentages for Player 1
+    public decimal? Player1FirstServePercentageCalc => Player1FirstServesTotal > 0 ? Math.Round((decimal)Player1FirstServesIn!.Value / Player1FirstServesTotal.Value * 100, 1) : null;
+    public decimal? Player1FirstServePointsWonPercentage => Player1FirstServePointsTotal > 0 ? Math.Round((decimal)Player1FirstServePointsWon!.Value / Player1FirstServePointsTotal.Value * 100, 1) : null;
+    public decimal? Player1SecondServePointsWonPercentage => Player1SecondServePointsTotal > 0 ? Math.Round((decimal)Player1SecondServePointsWon!.Value / Player1SecondServePointsTotal.Value * 100, 1) : null;
+    public decimal? Player1BreakPointsSavedPercentage => Player1BreakPointsFaced > 0 ? Math.Round((decimal)Player1BreakPointsSaved!.Value / Player1BreakPointsFaced.Value * 100, 1) : null;
+    
     public int? Player2Aces { get; set; }
     public int? Player2DoubleFaults { get; set; }
     public int? Player2FirstServePercentage { get; set; }
+    public int? Player2FirstServesIn { get; set; }
+    public int? Player2FirstServesTotal { get; set; }
+    public int? Player2FirstServePointsWon { get; set; }
+    public int? Player2FirstServePointsTotal { get; set; }
+    public int? Player2SecondServePointsWon { get; set; }
+    public int? Player2SecondServePointsTotal { get; set; }
+    public int? Player2BreakPointsSaved { get; set; }
+    public int? Player2BreakPointsFaced { get; set; }
     public int? Player2Winners { get; set; }
     public int? Player2UnforcedErrors { get; set; }
+    
+    // Calculated percentages for Player 2
+    public decimal? Player2FirstServePercentageCalc => Player2FirstServesTotal > 0 ? Math.Round((decimal)Player2FirstServesIn!.Value / Player2FirstServesTotal.Value * 100, 1) : null;
+    public decimal? Player2FirstServePointsWonPercentage => Player2FirstServePointsTotal > 0 ? Math.Round((decimal)Player2FirstServePointsWon!.Value / Player2FirstServePointsTotal.Value * 100, 1) : null;
+    public decimal? Player2SecondServePointsWonPercentage => Player2SecondServePointsTotal > 0 ? Math.Round((decimal)Player2SecondServePointsWon!.Value / Player2SecondServePointsTotal.Value * 100, 1) : null;
+    public decimal? Player2BreakPointsSavedPercentage => Player2BreakPointsFaced > 0 ? Math.Round((decimal)Player2BreakPointsSaved!.Value / Player2BreakPointsFaced.Value * 100, 1) : null;
 }
 
 public class SeasonDto

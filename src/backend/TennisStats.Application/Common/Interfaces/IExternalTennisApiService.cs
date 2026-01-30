@@ -85,9 +85,29 @@ public record ExternalMatchStatisticsDto(
     int? Player1Aces,
     int? Player1DoubleFaults,
     int? Player1FirstServePercentage,
+    int? Player1FirstServesIn,
+    int? Player1FirstServesTotal,
+    int? Player1FirstServePointsWon,
+    int? Player1FirstServePointsTotal,
+    int? Player1SecondServePointsWon,
+    int? Player1SecondServePointsTotal,
+    int? Player1BreakPointsSaved,
+    int? Player1BreakPointsFaced,
+    int? Player1Winners,
+    int? Player1UnforcedErrors,
     int? Player2Aces,
     int? Player2DoubleFaults,
-    int? Player2FirstServePercentage
+    int? Player2FirstServePercentage,
+    int? Player2FirstServesIn,
+    int? Player2FirstServesTotal,
+    int? Player2FirstServePointsWon,
+    int? Player2FirstServePointsTotal,
+    int? Player2SecondServePointsWon,
+    int? Player2SecondServePointsTotal,
+    int? Player2BreakPointsSaved,
+    int? Player2BreakPointsFaced,
+    int? Player2Winners,
+    int? Player2UnforcedErrors
 );
 
 public record ExternalRankingDto(
